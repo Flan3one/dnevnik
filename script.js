@@ -251,7 +251,7 @@ function kolvo(){
     
     for (let i = 1; i < rows.length; i++) {
     for (var j = 1; j < table.rows[0].cells.length; j++) {
-       rows[i].cells[j].textContent = countObjects(6-i,j+1).toString()+"-"+(((countObjects(6-i,j+1)))/(alldata())*100).toFixed(2).toString()+"%";
+       rows[i].cells[j].textContent = countObjects(6-i,j+1).toString()+"шт"+"-"+(((countObjects(6-i,j+1)))/(alldata())*100).toFixed(2).toString()+"%";
     }
    }
 }
@@ -330,7 +330,7 @@ function drawChart() {
         var value = parseFloat(table.rows[i].cells[j].innerText);
         data.addRow([category, value]);
        }
-        
+       var chart = new google.visualization.BarChart(document.getElementById('chart_div')); 
     }
     else{
        for (var l = 1; l < table.rows.length; l++){
@@ -344,8 +344,9 @@ function drawChart() {
            data.addRow([category, value]);
        }
     }
+    var chart = new google.visualization.ColumnChart(document.getElementById('chart_div'));
     }
-      var chart = new google.visualization.BarChart(document.getElementById('chart_div'));
+   
       chart.draw(data,options);
 }
 
